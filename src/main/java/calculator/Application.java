@@ -6,12 +6,19 @@ public class Application {
     public static void main(String[] args) {
         System.out.println("덧셈할 문자열을 입력해 주세요.");
         String input = Console.readLine();
+        System.out.println("입력값 : " + input);
 
         int result = 0;
         if (!input.isBlank()) {
-            // TODO : 문자열 계산기 구현
+            String[] numbers = input.split("[,:]");
+            for (String number : numbers) {
+                number = number.trim();
+                if (number.isEmpty()) {
+                    continue;
+                }
+                result += Integer.parseInt(number);
+            }
         }
-
         System.out.println("결과 : " + result);
     }
 }
