@@ -6,19 +6,30 @@ public class Application {
     public static void main(String[] args) {
         System.out.println("덧셈할 문자열을 입력해 주세요.");
         String input = Console.readLine();
-        System.out.println("입력값 : " + input);
 
         int result = 0;
         if (!input.isBlank()) {
-            String[] numbers = input.split("[,:]");
-            for (String number : numbers) {
-                number = number.trim();
-                if (number.isEmpty()) {
+            String delimiter = "[,:]";
+            String numbers = input;
+
+            if (input.startsWith("//")) {
+                int start = input.indexOf("//") + 2;
+                int end = input.indexOf("\\n");
+                String customDelimiter = input.substring(start, end);
+                delimiter = "[,:" + customDelimiter + "]";
+                numbers = input.substring(end + 2);
+            }
+
+            String[] numberStrings = numbers.split(delimiter);
+            for (String numberText : numberStrings) {
+                numberText = numberText.trim();
+                if (numberText.isEmpty()) {
                     continue;
                 }
-                result += Integer.parseInt(number);
+                result += Integer.parseInt(numberText);
             }
         }
+
         System.out.println("결과 : " + result);
     }
 }
