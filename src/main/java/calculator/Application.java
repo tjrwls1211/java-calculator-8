@@ -15,18 +15,43 @@ public class Application {
             if (input.startsWith("//")) {
                 int start = input.indexOf("//") + 2;
                 int end = input.indexOf("\\n");
+
+                if (end == -1) {
+                    throw new IllegalArgumentException("커스텀 구분자 형식이 잘못되었습니다.");
+                }
+
                 String customDelimiter = input.substring(start, end);
+                if (customDelimiter.isEmpty()) {
+                    throw new IllegalArgumentException("커스텀 구분자가 비어있습니다.");
+                }
+
                 delimiter = "[,:" + customDelimiter + "]";
                 numbers = input.substring(end + 2);
+
+                if (numbers.isEmpty()) {
+                    throw new IllegalArgumentException("숫자가 입력되지 않았습니다.");
+                }
             }
 
             String[] numberStrings = numbers.split(delimiter);
             for (String numberText : numberStrings) {
                 numberText = numberText.trim();
                 if (numberText.isEmpty()) {
-                    continue;
+                    throw new IllegalArgumentException("잘못된 입력입니다.");
                 }
-                result += Integer.parseInt(numberText);
+
+                int number;
+                try {
+                    number = Integer.parseInt(numberText);
+                } catch (NumberFormatException e) {
+                    throw new IllegalArgumentException("숫자가 아닌 값이 포함되어 있습니다: ");
+                }
+
+                if (number < 0) {
+                    throw new IllegalArgumentException("음수는 허용되지 않습니다: ");
+                }
+
+                result += number;
             }
         }
 
