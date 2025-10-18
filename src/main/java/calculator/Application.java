@@ -1,5 +1,6 @@
 package calculator;
 
+import calculator.number.NumberGroup;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
@@ -7,23 +8,14 @@ public class Application {
         System.out.println("덧셈할 문자열을 입력해 주세요.");
         String input = Console.readLine();
 
-        Delimiter delimiter = Delimiter.of(input);
-        String[] numbers = parseNumbers(input, delimiter);
+        try {
+            Delimiter delimiter = Delimiter.of(input);
+            NumberGroup numberGroup = NumberGroup.of(input, delimiter);
+            int result = numberGroup.sum();
 
-        int result = 0;
-        for (String number : numbers) {
-            result += Integer.parseInt(number);
+            System.out.println("결과 : " + result);
+        } catch (IllegalArgumentException e) {
+            System.out.println("예외 발생: " + e.getMessage());
         }
-
-        System.out.println("결과 : " + result);
-    }
-
-    public static String[] parseNumbers(String input, Delimiter delimiter) {
-        String numbersPart = input;
-        if (input.startsWith("//")) {
-            int end = input.indexOf("\\n");
-            numbersPart = input.substring(end + 2);
-        }
-        return numbersPart.split(delimiter.getDelimiter());
     }
 }
