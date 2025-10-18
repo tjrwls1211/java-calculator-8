@@ -9,10 +9,7 @@ public class Application {
         String input = Console.readLine();
 
         try {
-            Delimiter delimiter = Delimiter.of(input);
-            NumberGroup numberGroup = NumberGroup.of(input, delimiter);
-            int result = numberGroup.sum();
-
+            int result = StringAddCalculator.calculate(input);
             System.out.println("결과 : " + result);
         } catch (IllegalArgumentException e) {
             System.out.println("예외 발생: " + e.getMessage());
