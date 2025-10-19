@@ -25,7 +25,22 @@ public class Delimiter {
             throw new IllegalArgumentException("커스텀 구분자가 비어있습니다.");
         }
 
-        return new Delimiter("[,:" + customDelimiter + "]");
+        String escapedDelimiter = escapeMetaCharacters(customDelimiter);
+        return new Delimiter(escapedDelimiter);
+    }
+
+    private static String escapeMetaCharacters(String text) {
+        String metaChars = ".^$*+?()[]{}\\|";
+        StringBuilder escaped = new StringBuilder();
+
+        for (char c : text.toCharArray()) {
+            if (metaChars.indexOf(c) != -1) {
+                escaped.append('\\');
+            }
+            escaped.append(c);
+        }
+
+        return escaped.toString();
     }
 
     public String getDelimiter() {

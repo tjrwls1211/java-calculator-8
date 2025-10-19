@@ -1,6 +1,5 @@
 package calculator;
 
-import calculator.number.NumberGroup;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
