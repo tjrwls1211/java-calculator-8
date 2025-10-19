@@ -75,21 +75,21 @@
 
 ---
 
-- [ ] 입력 문자열에서 숫자를 추출하여 합을 계산한다.
-- [ ] 쉼표(`,`) 또는 콜론(`:`)을 기본 구분자로 사용한다.
-- [ ] `"//[구분자]\n"` 형태로 커스텀 구분자 지정 가능.
-- [ ] 잘못된 입력 시 `IllegalArgumentException` 발생 후 종료.
-- [ ] 결과를 `"결과 : [값]"` 형태로 출력한다.
-- [ ] 모든 테스트 케이스 통과 시 `BUILD SUCCESSFUL` 출력.
+- [x] 입력 문자열에서 숫자를 추출하여 합을 계산한다.
+- [x] 쉼표(`,`) 또는 콜론(`:`)을 기본 구분자로 사용한다.
+- [x] `"//[구분자]\n"` 형태로 커스텀 구분자 지정 가능.
+- [x] 잘못된 입력 시 `IllegalArgumentException` 발생 후 종료.
+- [x] 결과를 `"결과 : [값]"` 형태로 출력한다.
+- [x] 모든 테스트 케이스 통과 시 `BUILD SUCCESSFUL` 출력.
 
 ### 5-3. 프로그래밍 요구 사항
 
 ---
-- [ ] JDK 21 환경에서 실행 가능해야 한다.
-- [ ] 프로그램의 시작점은 `Application.main()`이다.
-- [ ] `build.gradle` 파일 수정 금지.
-- [ ] 제공된 라이브러리 외 외부 라이브러리 사용 금지.
-- [ ] `System.exit()` 사용 금지.
-- [ ] 파일 및 패키지 구조 변경 금지.
-- [ ] `camp.nextstep.edu.missionutils.Console.readLine()`을 통해 입력받는다.
-- [ ] Java Style Guide 준수 (https://google.github.io/styleguide/javaguide.html)
+- [x] JDK 21 환경에서 실행 가능해야 한다.
+- [x] 프로그램의 시작점은 `Application.main()`이다.
+- [x] `build.gradle` 파일 수정 금지.
+- [x] 제공된 라이브러리 외 외부 라이브러리 사용 금지.
+- [x] `System.exit()` 사용 금지.
+- [x] 파일 및 패키지 구조 변경 금지.
+- [x] `camp.nextstep.edu.missionutils.Console.readLine()`을 통해 입력받는다.
+- [x] Java Style Guide 준수 (https://google.github.io/styleguide/javaguide.html)
