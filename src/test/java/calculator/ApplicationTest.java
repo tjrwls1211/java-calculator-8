@@ -80,6 +80,22 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 커스텀_구분자가_빈값일_경우_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("//\\n1;2;3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 이스케이프_문자_포함_커스텀_구분자_테스트() {
+        assertSimpleTest(() -> {
+            run("//\\\\n1\\2\\3");
+            assertThat(output()).contains("결과 : 6");
+        });
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
